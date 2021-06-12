@@ -8,13 +8,9 @@ The purpose of the tool is to save some minute of your time by auto executing va
 The following tools are integrated to the tool
 * Google Mail
 * ClickUp
-* Google Calendar
 
 # Features
 These are the planned features 
-* Extract work task on your ClickUp account (ongoing)
-* Retrieve calendar for your meeting information
-* Sends work check-in and check-out email (ongoing)
-* Generates a weekly summary report for your Daily Time Report
-
+* Extract work task on your ClickUp account
+* Sends work check-in and check-out email
 # Configuration

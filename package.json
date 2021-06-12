@@ -5,7 +5,8 @@
   "main": "index.js",
   "bin": "./bin/work.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "./node_modules/.bin/eslint . --fix"
   },
   "author": "Randolf Arevalo <randolf.arevalo@gmail.com>",
   "license": "ISC",
@@ -17,6 +18,8 @@
     "nodemailer": "^6.6.1"
   },
   "devDependencies": {
-    "eslint": "^7.27.0"
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4"
   }
 }
