@@ -20,10 +20,11 @@ async function main() {
   switch (action) {
     case 'start':
       console.log('getting the things you need to do today')
-      clickup.GetTodayTask(startDate, endDate)
+      clickup.GetTasks(startDate, endDate)
       break
     case 'end':
       console.log('end work')
+      clickup.GetTasks(startDate, endDate, true)
       break
     default:
       console.log('unknown action')
