@@ -16,3 +16,5 @@ These are the planned features
 * Retrieve calendar for your meeting information
 * Sends work check-in and check-out email (ongoing)
 * Generates a weekly summary report for your Daily Time Report
+
+# Configuration

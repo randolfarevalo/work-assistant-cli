@@ -2,6 +2,7 @@
 const Mailer = require('../lib/mailer')
 const ClickUp = require('../lib/clickup')
 const config = require('config')
+
 const APP_NAME = 'work-assistant-cli'
 
 async function main() {
@@ -10,10 +11,10 @@ async function main() {
   let clickUpConfig = config.get('ClickUp');
 
   const clickup = new ClickUp(clickUpConfig);
-  //const mailer = new Mailer()
 
   let action = process.argv[2]
-  
+
+
   switch(action) {
     case 'start':
       console.log('lets get to work');
