@@ -2,13 +2,16 @@
 const config = require('config')
 const { DateTime } = require('luxon')
 const ClickUp = require('../lib/clickup')
+const Report = require('../lib/report')
+const Mailer = require('../lib/mailer')
 
 const APP_NAME = 'work-assistant-cli'
 
 async function main() {
-  // let mailConfig = config.get('Mail');
+  const mailConfig = config.get('Mail');
   const clickUpConfig = config.get('ClickUp')
   const clickup = new ClickUp(clickUpConfig)
+  const mailer = new Mailer(mailConfig)
 
   console.log(`Starting ${APP_NAME}`)
   let action = process.argv[2]
@@ -19,8 +22,18 @@ async function main() {
 
   switch (action) {
     case 'start':
+      /**
+       * Process
+       * 1. get current time
+       * 2. get task today
+       * 3. add custom entry
+       * 4. confirm to send
+       * 5. send e-mail
+       */
       console.log('getting the things you need to do today')
-      clickup.GetTasks(startDate, endDate)
+      let taskData = clickup.GetTasks(startDate, endDate)
+      let report = Report.toTextEmail(taskData);
+      mailer.Send('', '', report, true)
       break
     case 'end':
       console.log('end work')
