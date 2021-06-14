@@ -31,8 +31,10 @@ async function main() {
        * 5. send e-mail
        */
       console.log('getting the things you need to do today')
-      let taskData = clickup.GetTasks(startDate, endDate)
-      let report = Report.toTextEmail(taskData);
+      let metaData = { time_start: DateTime.now().toFormat(DateTime.TIME_SIMPLE) }
+      console.log(metaData)
+      let taskData = await clickup.GetTasks(startDate, endDate)
+      let report = Report.toHTMLEmail(taskData)
       mailer.Send('', '', report, true)
       break
     case 'end':
