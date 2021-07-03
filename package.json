@@ -1,9 +1,12 @@
 {
-  "name": "work",
+  "name": "work-assistant-cli",
+  "longName": "Work Assistant CLI",
   "version": "0.0.1",
   "description": "task automation tool",
   "main": "index.js",
-  "bin": "./bin/work.js",
+  "bin": {
+    "work": "./bin/work.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "./node_modules/.bin/eslint . --fix"
@@ -14,6 +17,7 @@
     "axios": "^0.21.1",
     "config": "^3.3.6",
     "express": "^4.17.1",
+    "html-creator": "^0.4.4",
     "luxon": "^1.27.0",
     "nodemailer": "^6.6.1"
   },

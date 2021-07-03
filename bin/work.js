@@ -1,11 +1,10 @@
 #! /usr/bin/env node
+const package = require('../package.json')
 const config = require('config')
 const { DateTime } = require('luxon')
 const ClickUp = require('../lib/clickup')
 const Report = require('../lib/report')
 const Mailer = require('../lib/mailer')
-
-const APP_NAME = 'work-assistant-cli'
 
 async function main() {
   const mailConfig = config.get('Mail');
@@ -13,7 +12,7 @@ async function main() {
   const clickup = new ClickUp(clickUpConfig)
   const mailer = new Mailer(mailConfig)
 
-  console.log(`Starting ${APP_NAME}`)
+  console.log(`Starting ${package.longName} v${package.version}`)
   let action = process.argv[2]
 
   // ISO8601 to unix timestamp
@@ -24,22 +23,23 @@ async function main() {
     case 'start':
       /**
        * Process
-       * 1. get current time
+       * 1. get current time  DateTime.now().toFormat(DateTime.TIME_SIMPLE)
        * 2. get task today
        * 3. add custom entry
        * 4. confirm to send
        * 5. send e-mail
        */
-      console.log('getting the things you need to do today')
-      let metaData = { time_start: DateTime.now().toFormat(DateTime.TIME_SIMPLE) }
-      console.log(metaData)
+      
+
+      /*
       let taskData = await clickup.GetTasks(startDate, endDate)
       let report = Report.toHTMLEmail(taskData)
       mailer.Send('', '', report, true)
+      */
       break
     case 'end':
       console.log('end work')
-      clickup.GetTasks(startDate, endDate, true)
+      console.log(clickup.GetTasks(startDate, endDate, true))
       break
     default:
       console.log('unknown action')
